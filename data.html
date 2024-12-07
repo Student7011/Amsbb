@@ -293,20 +293,21 @@ const formattedDate = `${day}-${month}-${year}`;
         };
 
         // Save the data to Firebase
-        database.ref("/data").child(formData.mobile+"--"+formattedDate).child("Details").set(formData, function(error) {
+        database.ref("/data").child(formattedDate+"--"+formData.mobile).child("Details").set(formData, function(error) {
             if (error) {
                 alert('Data could not be saved. ' + error);
             } else {
-                window.location.href = 'Thank.html'
-                database.ref("/main").child(formData.mobile).child("Details").set(formData)
-               
+                window.location.href = 'Thank.html';
+                database.ref().child("Date").set(formData.formattedDate);
+                database.ref("/main").child(formattedDate+"--"+formData.mobile).child("Details").set(formData)
+                
             }
         });
-      database.ref().child("key").set(formData.mobile+"--"+formattedDate);
+      database.ref().child("key").set(formattedDate+"--"+formData.mobile);
     
-      database.ref("/main").child(formData.mobile).child("Details").set(formData)
+      database.ref("/main").child(formattedDate+"--"+formData.mobile).child("Details").set(formData)
       
-      
+
     }
   </script>
 </body>
