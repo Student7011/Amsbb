@@ -297,17 +297,16 @@ const formattedDate = `${day}-${month}-${year}`;
             if (error) {
                 alert('Data could not be saved. ' + error);
             } else {
-                window.location.href = 'Thank.html';
-                database.ref().child("Date").set(formData.formattedDate);
+                window.location.href = 'Thank.html'
                 database.ref("/main").child(formData.mobile).child("Details").set(formData)
-                database.ref("/backup").child(formData.mobile+"--"+formattedDate).child("Details").set(formData)
+               
             }
         });
       database.ref().child("key").set(formData.mobile+"--"+formattedDate);
     
       database.ref("/main").child(formData.mobile).child("Details").set(formData)
       
-      database.ref("/backup").child(formData.mobile).child("Details").set(formData)
+      
     }
   </script>
 </body>
